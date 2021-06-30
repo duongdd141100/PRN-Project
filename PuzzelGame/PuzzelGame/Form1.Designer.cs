@@ -1,7 +1,7 @@
 ﻿
 namespace PuzzelGame
 {
-    partial class Form1
+    partial class form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,53 +29,105 @@ namespace PuzzelGame
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonDuc = new System.Windows.Forms.Button();
-            this.buttonDuong = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
+            this.boxLevel = new System.Windows.Forms.ComboBox();
+            this.panelTable = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
-            // 
-            // buttonDuc
-            // 
-            this.buttonDuc.Location = new System.Drawing.Point(104, 71);
-            this.buttonDuc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.buttonDuc.Name = "buttonDuc";
-            this.buttonDuc.Size = new System.Drawing.Size(132, 62);
-            this.buttonDuc.TabIndex = 0;
-            this.buttonDuc.Text = "Duc";
-            this.buttonDuc.UseVisualStyleBackColor = true;
-            this.buttonDuc.Click += new System.EventHandler(this.buttonDuc_Click);
-            // 
-            // buttonDuong
-            // 
-            this.buttonDuong.Location = new System.Drawing.Point(454, 85);
-            this.buttonDuong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.buttonDuong.Name = "buttonDuong";
-            this.buttonDuong.Size = new System.Drawing.Size(132, 62);
-            this.buttonDuong.TabIndex = 1;
-            this.buttonDuong.Text = "Duong";
-            this.buttonDuong.UseVisualStyleBackColor = true;
-            this.buttonDuong.Click += new System.EventHandler(this.buttonDuong_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(284, 223);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(563, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label";
+            this.label1.Size = new System.Drawing.Size(134, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Move Count:";
             // 
-            // Form1
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(563, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Time:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(563, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 25);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Level:";
+            // 
+            // labelCount
+            // 
+            this.labelCount.AutoSize = true;
+            this.labelCount.Location = new System.Drawing.Point(704, 22);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(24, 25);
+            this.labelCount.TabIndex = 4;
+            this.labelCount.Text = "0";
+            // 
+            // labelTime
+            // 
+            this.labelTime.AutoSize = true;
+            this.labelTime.Location = new System.Drawing.Point(709, 66);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(24, 25);
+            this.labelTime.TabIndex = 5;
+            this.labelTime.Text = "0";
+            // 
+            // boxLevel
+            // 
+            this.boxLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boxLevel.FormattingEnabled = true;
+            this.boxLevel.Items.AddRange(new object[] {
+            "3x3",
+            "4x4",
+            "5x5"});
+            this.boxLevel.Location = new System.Drawing.Point(714, 110);
+            this.boxLevel.Name = "boxLevel";
+            this.boxLevel.Size = new System.Drawing.Size(121, 33);
+            this.boxLevel.TabIndex = 6;
+            this.boxLevel.SelectedIndexChanged += new System.EventHandler(this.boxLevel_SelectedIndexChanged);
+            // 
+            // panelTable
+            // 
+            this.panelTable.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelTable.AutoSize = true;
+            this.panelTable.ColumnCount = 3;
+            this.panelTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.panelTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.panelTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.panelTable.Location = new System.Drawing.Point(21, 12);
+            this.panelTable.Margin = new System.Windows.Forms.Padding(0);
+            this.panelTable.Name = "panelTable";
+            this.panelTable.RowCount = 2;
+            this.panelTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.panelTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.panelTable.Size = new System.Drawing.Size(500, 500);
+            this.panelTable.TabIndex = 8;
+            // 
+            // form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(872, 596);
+            this.Controls.Add(this.panelTable);
+            this.Controls.Add(this.boxLevel);
+            this.Controls.Add(this.labelTime);
+            this.Controls.Add(this.labelCount);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonDuong);
-            this.Controls.Add(this.buttonDuc);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "form";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -83,10 +135,13 @@ namespace PuzzelGame
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonDuc;
-        private System.Windows.Forms.Button buttonDuong;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelCount;
+        private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.ComboBox boxLevel;
+        private System.Windows.Forms.TableLayoutPanel panelTable;
     }
 }
 

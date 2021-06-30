@@ -9,21 +9,54 @@ using System.Windows.Forms;
 
 namespace PuzzelGame
 {
-    public partial class Form1 : Form
+    public partial class form : Form
     {
-        public Form1()
+        int level;
+        int count = 0;
+        int time = 0;
+        Button[][] buttons;
+        int width;
+        int height;
+        public form()
         {
             InitializeComponent();
+
+
+            boxLevel.SelectedIndex = 0;
+            level = getLevel();
+            Controller con = new Controller(panelTable, level);
+            //con.designButton();
+            //Button button = new Button();
+            //button.Text = "1";
+            //panel.Controls.Add(button);
+
+            // Button button2 = new Button();
+            //button2.Text = "2";
+            //Button button3 = new Button();
+            //button3.Text = "3";
+
+
         }
 
-        private void buttonDuong_Click(object sender, EventArgs e)
+        private int getLevel()
         {
-            label1.Text = "Hello Duong";
+            String input = boxLevel.SelectedItem.ToString();
+            for(int i = 0; i < input.Length; i++)
+            {
+                if(input[i] == 'x')
+                {
+                    return Int32.Parse(input.Substring(0, i));
+                }
+            }
+            return -1;
         }
 
-        private void buttonDuc_Click(object sender, EventArgs e)
+        private void boxLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label1.Text = "Hello Duc";
+            panelTable.Controls.Clear();
+            level = getLevel();
+            Controller con = new Controller(panelTable, level);
+            con.designButton();
         }
     }
 }
