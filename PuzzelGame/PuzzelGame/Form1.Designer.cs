@@ -43,7 +43,6 @@ namespace PuzzelGame
             this.buttonDuc.TabIndex = 0;
             this.buttonDuc.Text = "Duc";
             this.buttonDuc.UseVisualStyleBackColor = true;
-            this.buttonDuc.Click += new System.EventHandler(this.buttonDuc_Click);
             // 
             // buttonDuong
             // 
