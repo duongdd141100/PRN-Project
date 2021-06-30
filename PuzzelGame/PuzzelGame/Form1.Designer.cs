@@ -51,6 +51,7 @@ namespace PuzzelGame
             this.buttonDuong.TabIndex = 1;
             this.buttonDuong.Text = "Duong";
             this.buttonDuong.UseVisualStyleBackColor = true;
+            this.buttonDuong.Click += new System.EventHandler(this.buttonDuong_Click);
             // 
             // label1
             // 

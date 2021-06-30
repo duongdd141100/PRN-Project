@@ -15,5 +15,10 @@ namespace PuzzelGame
         {
             InitializeComponent();
         }
+
+        private void buttonDuong_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Hello Duong";
+        }
     }
 }
