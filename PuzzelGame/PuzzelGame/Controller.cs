@@ -45,9 +45,10 @@ namespace PuzzelGame
         {
             int rowIndex = level - 1;
             int colIndex = level - 1;
-            for(int i = 0; i < 1000 * level; i++)
+            Random random = new Random();
+            for (int i = 0; i < 1000 * level; i++)
             {
-                Random random = new Random();
+                
                 int temp = random.Next(1, 5);
                 switch(temp)
                 {
