@@ -48,13 +48,14 @@ namespace PuzzelGame
             for(int i = 0; i < 1000 * level; i++)
             {
                 Random random = new Random();
-                int temp = random.Next(0, 5);
+                int temp = random.Next(1, 5);
                 switch(temp)
                 {
                     //up
                     case 1:
                         if(rowIndex > 0)
-                        {     buttons[rowIndex, colIndex].Text = buttons[rowIndex - 1, colIndex].Text;
+                        {     
+                            buttons[rowIndex, colIndex].Text = buttons[rowIndex - 1, colIndex].Text;
                             buttons[rowIndex - 1, colIndex].Text = "";
                             rowIndex -= 1;
                         }
