@@ -36,20 +36,21 @@ namespace PuzzelGame
             // 
             // buttonDuc
             // 
-            this.buttonDuc.Location = new System.Drawing.Point(52, 37);
-            this.buttonDuc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDuc.Location = new System.Drawing.Point(104, 71);
+            this.buttonDuc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDuc.Name = "buttonDuc";
-            this.buttonDuc.Size = new System.Drawing.Size(66, 32);
+            this.buttonDuc.Size = new System.Drawing.Size(132, 62);
             this.buttonDuc.TabIndex = 0;
             this.buttonDuc.Text = "Duc";
             this.buttonDuc.UseVisualStyleBackColor = true;
+            this.buttonDuc.Click += new System.EventHandler(this.buttonDuc_Click);
             // 
             // buttonDuong
             // 
-            this.buttonDuong.Location = new System.Drawing.Point(227, 44);
-            this.buttonDuong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDuong.Location = new System.Drawing.Point(454, 85);
+            this.buttonDuong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDuong.Name = "buttonDuong";
-            this.buttonDuong.Size = new System.Drawing.Size(66, 32);
+            this.buttonDuong.Size = new System.Drawing.Size(132, 62);
             this.buttonDuong.TabIndex = 1;
             this.buttonDuong.Text = "Duong";
             this.buttonDuong.UseVisualStyleBackColor = true;
@@ -58,22 +59,22 @@ namespace PuzzelGame
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 116);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(284, 223);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(58, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "label";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 234);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonDuong);
             this.Controls.Add(this.buttonDuc);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

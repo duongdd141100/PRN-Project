@@ -20,5 +20,10 @@ namespace PuzzelGame
         {
             label1.Text = "Hello Duong";
         }
+
+        private void buttonDuc_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Hello Duc";
+        }
     }
 }
