@@ -16,9 +16,9 @@ namespace PuzzelGame
             InitializeComponent();
         }
 
-        private void buttonDuc_Click(object sender, EventArgs e)
+        private void buttonDuong_Click(object sender, EventArgs e)
         {
-            label1.Text = "Hello Duc";
+            label1.Text = "Hello Duong";
         }
     }
 }
