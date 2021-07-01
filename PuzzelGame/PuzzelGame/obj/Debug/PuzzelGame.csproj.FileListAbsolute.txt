@@ -7,3 +7,12 @@ C:\Users\Do Duc Duong\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Deb
 C:\Users\Do Duc Duong\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.exe
 C:\Users\Do Duc Duong\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.pdb
 C:\Users\Do Duc Duong\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.form.resources
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\bin\Debug\PuzzelGame.exe
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\bin\Debug\PuzzelGame.pdb
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.csprojAssemblyReference.cache
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.form.resources
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.Properties.Resources.resources
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.csproj.GenerateResource.cache
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.csproj.CoreCompileInputs.cache
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.exe
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.pdb

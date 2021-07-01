@@ -20,7 +20,8 @@ namespace PuzzelGame
         public form()
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            //this.SetStyle(ControlStyles.ResizeRedraw, true);
 
             boxLevel.SelectedIndex = 0;
             level = getLevel();
@@ -57,6 +58,16 @@ namespace PuzzelGame
             level = getLevel();
             Controller con = new Controller(panelTable, level);
             con.designButton();
+        }
+
+        private void panelTable_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void form_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
