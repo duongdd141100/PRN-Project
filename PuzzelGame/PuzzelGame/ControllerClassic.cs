@@ -4,55 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace PuzzelGame
 {
-    class Controller
+    class ControllerClassic
     {
         private TableLayoutPanel panel;
         private int level;
         private Button[,] buttons;
-        Bitmap[,] bmps;
+        Label labelCount;
 
-        public Controller(TableLayoutPanel panel, int level)
+        public ControllerClassic(TableLayoutPanel panel, int level, Label labelCount)
         {
             this.panel = panel;
             this.level = level;
+            this.labelCount = labelCount;
             panel.ColumnCount = level;
             panel.RowCount = level;
         }
-
+        int count = 0;
         private void ButtonHanler(object sender, EventArgs e)
         {
             for (int i = 0; i < level; i++)
             {
                 for (int j = 0; j < level; j++)
                 {
-                    if (buttons[i, j].BackgroundImage == null)
+                    if (buttons[i, j].Text.Equals(""))
                     {
                         if (i < level - 1 && sender == buttons[i + 1, j])
                         {
-                            buttons[i, j].BackgroundImage = buttons[i + 1, j].BackgroundImage;
-                            buttons[i + 1, j].BackgroundImage = null;
+                            buttons[i, j].Text = buttons[i + 1, j].Text;
+                            buttons[i + 1, j].Text = "";
                         }
                         if (i > 0 && sender == buttons[i - 1, j])
                         {
-                            buttons[i, j].BackgroundImage = buttons[i - 1, j].BackgroundImage;
-                            buttons[i - 1, j].BackgroundImage = null;
+                            buttons[i, j].Text = buttons[i - 1, j].Text;
+                            buttons[i - 1, j].Text = "";
                         }
                         if (j < level - 1 && sender == buttons[i, j + 1])
                         {
-                            buttons[i, j].BackgroundImage = buttons[i, j + 1].BackgroundImage;
-                            buttons[i, j + 1].BackgroundImage = null;
+                            buttons[i, j].Text = buttons[i, j + 1].Text;
+                            buttons[i, j + 1].Text = "";
                         }
                         if (j > 0 && sender == buttons[i, j - 1])
                         {
-                            buttons[i, j].BackgroundImage = buttons[i, j - 1].BackgroundImage;
-                            buttons[i, j - 1].BackgroundImage = null;
+                            buttons[i, j].Text = buttons[i, j - 1].Text;
+                            buttons[i, j - 1].Text = "";
                         }
                     }
                 }
             }
+            //int count = Int32.Parse(labelCount.Text);
+            labelCount.Text = (++count).ToString();
             if (checkSuccess())
             {
                 MessageBox.Show("you win");
@@ -65,36 +69,18 @@ namespace PuzzelGame
         {
             panel.Location = new Point(5, 5);
             buttons = new Button[level, level];
-            Image img = Image.FromFile("../PuzzleGame/Images/Mybae2.jpeg");
-            //img.Width = 210;
-            int widthThird = (int)((double)img.Width / level);
-            int heightThird = (int)((double)img.Height / level);
-            bmps = new Bitmap[level, level];
-            for (int i = 0; i < level; i++)
-                for (int j = 0; j < level; j++)
-                {
-                    bmps[i, j] = new Bitmap(widthThird, heightThird);
-                    Graphics g = Graphics.FromImage(bmps[i, j]);
-                    g.DrawImage(img, new Rectangle(0, 0, widthThird, heightThird), new Rectangle(j * widthThird, i * heightThird, widthThird, heightThird), GraphicsUnit.Pixel);
-                    g.Dispose();
-                }
-            bmps[level - 1, level - 1] = null;
-
+         
             for (int i = 0; i < level; i++)
             {
                 for (int j = 0; j < level; j++)
                 {
                     buttons[i, j] = new Button();
-                    //buttons[i, j].Text = (i * level + j + 1) + "";
-                    //Console.WriteLine(panel.Width + " " + level);
-                    //Console.WriteLine(panel.Width / level + "," + panel.Height / level);
-                    buttons[i, j].BackgroundImage = bmps[i, j];
-                    buttons[i, j].Size = new Size(img.Width / level, img.Height / level);
+                    buttons[i, j].Text = (i * level + j + 1) + "";
                     buttons[i, j].Click += ButtonHanler;
                     panel.Controls.Add(buttons[i, j]);
                 }
             }
-            buttons[level - 1, level - 1].BackgroundImage = null;
+            buttons[level - 1, level - 1].Text = "";
 
 
             randomButton();
@@ -104,9 +90,10 @@ namespace PuzzelGame
         {
             for (int i = 0; i < level; i++)
             {
-                for (int j = 0; j < level; j++)
+                for (int j = 0; j < level - 1; j++)
                 {
-                    if (buttons[i, j].BackgroundImage != bmps[i, j])
+                    int num = i * level + j + 1;
+                    if (!buttons[i, j].Text.Equals(num.ToString()))
                     {
                         return false;
                     }
@@ -129,8 +116,8 @@ namespace PuzzelGame
                     case 1:
                         if (rowIndex > 0)
                         {
-                            buttons[rowIndex, colIndex].BackgroundImage = buttons[rowIndex - 1, colIndex].BackgroundImage;
-                            buttons[rowIndex - 1, colIndex].BackgroundImage = null;
+                            buttons[rowIndex, colIndex].Text = buttons[rowIndex - 1, colIndex].Text;
+                            buttons[rowIndex - 1, colIndex].Text = "";
                             rowIndex -= 1;
                         }
                         break;
@@ -139,8 +126,8 @@ namespace PuzzelGame
                     case 2:
                         if (colIndex < level - 1)
                         {
-                            buttons[rowIndex, colIndex].BackgroundImage = buttons[rowIndex, colIndex + 1].BackgroundImage;
-                            buttons[rowIndex, colIndex + 1].BackgroundImage = null;
+                            buttons[rowIndex, colIndex].Text = buttons[rowIndex, colIndex + 1].Text;
+                            buttons[rowIndex, colIndex + 1].Text = "";
                             colIndex += 1;
                         }
                         break;
@@ -148,8 +135,8 @@ namespace PuzzelGame
                     case 3:
                         if (rowIndex < level - 1)
                         {
-                            buttons[rowIndex, colIndex].BackgroundImage = buttons[rowIndex + 1, colIndex].BackgroundImage;
-                            buttons[rowIndex + 1, colIndex].BackgroundImage = null;
+                            buttons[rowIndex, colIndex].Text = buttons[rowIndex + 1, colIndex].Text;
+                            buttons[rowIndex + 1, colIndex].Text = "";
                             rowIndex += 1;
                         }
                         break;
@@ -157,13 +144,14 @@ namespace PuzzelGame
                     case 4:
                         if (colIndex > 0)
                         {
-                            buttons[rowIndex, colIndex].BackgroundImage = buttons[rowIndex, colIndex - 1].BackgroundImage;
-                            buttons[rowIndex, colIndex - 1].BackgroundImage = null;
+                            buttons[rowIndex, colIndex].Text = buttons[rowIndex, colIndex - 1].Text;
+                            buttons[rowIndex, colIndex - 1].Text = "";
                             colIndex -= 1;
                         }
                         break;
                 }
             }
         }
+        
     }
 }

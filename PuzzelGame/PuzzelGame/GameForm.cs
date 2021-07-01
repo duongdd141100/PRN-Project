@@ -9,34 +9,19 @@ using System.Windows.Forms;
 
 namespace PuzzelGame
 {
-    public partial class form : Form
+    public partial class GameForm : Form
     {
         int level;
-        int count = 0;
+        public int count = 0;
         int time = 0;
-        Button[][] buttons;
-        int width;
-        int height;
-        public form()
+        String imgPath;
+        public GameForm(String imgPath)
         {
             InitializeComponent();
+            this.imgPath = imgPath;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            //this.SetStyle(ControlStyles.ResizeRedraw, true);
-
             boxLevel.SelectedIndex = 0;
             level = getLevel();
-            Controller con = new Controller(panelTable, level);
-            //con.designButton();
-            //Button button = new Button();
-            //button.Text = "1";
-            //panel.Controls.Add(button);
-
-            // Button button2 = new Button();
-            //button2.Text = "2";
-            //Button button3 = new Button();
-            //button3.Text = "3";
-
-
         }
 
         private int getLevel()
@@ -56,8 +41,16 @@ namespace PuzzelGame
         {
             panelTable.Controls.Clear();
             level = getLevel();
-            Controller con = new Controller(panelTable, level);
-            con.designButton();
+            if(String.IsNullOrEmpty(imgPath))
+            {
+                ControllerClassic con = new ControllerClassic(panelTable, level, labelCount);
+                con.designButton();
+            } else
+            {
+                ControllerImg con = new ControllerImg(panelTable, level, imgPath, labelCount);
+                con.designButton();
+            }
+                
         }
 
         private void panelTable_Paint(object sender, PaintEventArgs e)
