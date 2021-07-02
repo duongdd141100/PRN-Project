@@ -32,31 +32,37 @@ namespace PuzzelGame
                 {
                     if (buttons[i, j].Text.Equals(""))
                     {
+                        
                         if (i < level - 1 && sender == buttons[i + 1, j])
                         {
                             buttons[i, j].Text = buttons[i + 1, j].Text;
                             buttons[i + 1, j].Text = "";
+                            labelCount.Text = (++count).ToString();
                         }
                         if (i > 0 && sender == buttons[i - 1, j])
                         {
                             buttons[i, j].Text = buttons[i - 1, j].Text;
                             buttons[i - 1, j].Text = "";
+                            labelCount.Text = (++count).ToString();
                         }
                         if (j < level - 1 && sender == buttons[i, j + 1])
                         {
                             buttons[i, j].Text = buttons[i, j + 1].Text;
                             buttons[i, j + 1].Text = "";
+                            labelCount.Text = (++count).ToString();
+                            labelCount.Text = (++count).ToString();
                         }
                         if (j > 0 && sender == buttons[i, j - 1])
                         {
                             buttons[i, j].Text = buttons[i, j - 1].Text;
                             buttons[i, j - 1].Text = "";
+                            labelCount.Text = (++count).ToString();
                         }
                     }
                 }
             }
             //int count = Int32.Parse(labelCount.Text);
-            labelCount.Text = (++count).ToString();
+            
             if (checkSuccess())
             {
                 MessageBox.Show("you win");
@@ -67,6 +73,7 @@ namespace PuzzelGame
 
         internal void designButton()
         {
+
             panel.Location = new Point(5, 5);
             buttons = new Button[level, level];
          
@@ -77,6 +84,7 @@ namespace PuzzelGame
                     buttons[i, j] = new Button();
                     buttons[i, j].Text = (i * level + j + 1) + "";
                     buttons[i, j].Click += ButtonHanler;
+                    buttons[i, j].Size = new Size(210 / level, 210 / level);
                     panel.Controls.Add(buttons[i, j]);
                 }
             }
