@@ -72,7 +72,21 @@ namespace PuzzelGame
         {
             panel.Location = new Point(5, 5);
             buttons = new Button[level, level];
-            Image img = Image.FromFile("Images\\MyBae2.jpeg");
+            Image img;
+            if(imgPath.Equals("img1"))
+            {
+                img = PuzzelGame.Properties.Resources.img1;
+            } else if (imgPath.Equals("img2"))
+            {
+                img = PuzzelGame.Properties.Resources.img2;
+            }
+            else if (imgPath.Equals("img3"))
+            {
+                img = PuzzelGame.Properties.Resources.img3;
+            } else
+            {
+                img = Image.FromFile(imgPath);
+            }
             //img.Width = 210;
             img = resizeImage(img, new Size(250, 250));
             int widthThird = (int)((double)img.Width / level);
