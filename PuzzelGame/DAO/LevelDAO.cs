@@ -11,7 +11,7 @@ namespace DAO
         public DataTable getLevel()
         {
             DataProvider dataProvider = new DataProvider();
-            return dataProvider.executeQuery("SELECT name FROM Level");
+            return dataProvider.executeQuery("SELECT level FROM Level");
         }
     }
 }

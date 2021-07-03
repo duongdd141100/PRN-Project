@@ -115,10 +115,6 @@ namespace PuzzelGame
             this.boxLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boxLevel.FormattingEnabled = true;
-            this.boxLevel.Items.AddRange(new object[] {
-            "3x3",
-            "4x4",
-            "5x5"});
             this.boxLevel.Location = new System.Drawing.Point(375, 356);
             this.boxLevel.Margin = new System.Windows.Forms.Padding(2);
             this.boxLevel.Name = "boxLevel";

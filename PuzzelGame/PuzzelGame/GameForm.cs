@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-//using BUS;
+using BUS;
 
 namespace PuzzelGame
 {
@@ -27,14 +27,18 @@ namespace PuzzelGame
             
         }
 
-        //private void loadLevel()
-        //{
-        //    boxLevel.Items.Add("3x3");
-        //    //LevelBUS levelBUS = new LevelBUS();
-        //    //DataTable dataTable = levelBUS.getLevel();
-        //    //boxLevel.DataSource = dataTable;
+        private void loadLevel()
+        {
+            //boxLevel.Items.Add("3x3");
+            LevelBUS levelbus = new LevelBUS();
+            DataTable datatable = levelbus.getLevel();
+            foreach (DataRow item in datatable.Rows)
+            {
+                boxLevel.Items.Add(item["level"].ToString());
+            }
+            //boxLevel.DataSource = datatable;
 
-        //}
+        }
 
         private int getLevel()
         {
@@ -94,9 +98,9 @@ namespace PuzzelGame
                 pictureBox.Image = controllerImg.resizeImage(Image.FromFile(imgPath), new Size(270, 270));
 
             }
-            //loadLevel();
+            loadLevel();
             boxLevel.SelectedIndex = 0;
-            level = getLevel();
+            //level = getLevel();
             // TODO: This line of code loads data into the 'pROJECT_PRNDataSet.Level' table. You can move, or remove it, as needed.
             //this.levelTableAdapter.Fill(this.pROJECT_PRNDataSet.Level);
 

@@ -21,3 +21,9 @@ C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\bin\D
 C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.ChooseGameType.resources
 C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.GameForm.resources
 C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\bin\Debug\PuzzelGame.exe.config
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\bin\Debug\BUS.exe
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\bin\Debug\DAO.exe
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\bin\Debug\BUS.pdb
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\bin\Debug\DAO.pdb
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\bin\Debug\DAO.exe.config
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\PuzzelGame\obj\Debug\PuzzelGame.csproj.CopyComplete
