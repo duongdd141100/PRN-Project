@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PROJECT_PRNDataSet" targetNamespace="http://tempuri.org/PROJECT_PRNDataSet.xsd" xmlns:mstns="http://tempuri.org/PROJECT_PRNDataSet.xsd" xmlns="http://tempuri.org/PROJECT_PRNDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="PROJECT_PRNConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PROJECT_PRNConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.PuzzelGame.Properties.Settings.GlobalReference.Default.PROJECT_PRNConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LevelTableAdapter" GeneratorDataComponentClassName="LevelTableAdapter" Name="Level" UserDataComponentName="LevelTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PROJECT_PRNConnectionString (Settings)" DbObjectName="PROJECT_PRN.dbo.Level" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [level] FROM dbo.[Level]</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="level" DataSetColumn="level" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PROJECT_PRNDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PROJECT_PRNDataSet" msprop:Generator_UserDSName="PROJECT_PRNDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Level" msprop:Generator_TableClassName="LevelDataTable" msprop:Generator_TableVarName="tableLevel" msprop:Generator_TablePropName="Level" msprop:Generator_RowDeletingName="LevelRowDeleting" msprop:Generator_RowChangingName="LevelRowChanging" msprop:Generator_RowEvHandlerName="LevelRowChangeEventHandler" msprop:Generator_RowDeletedName="LevelRowDeleted" msprop:Generator_UserTableName="Level" msprop:Generator_RowChangedName="LevelRowChanged" msprop:Generator_RowEvArgName="LevelRowChangeEvent" msprop:Generator_RowClassName="LevelRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="level" msprop:Generator_ColumnVarNameInTable="columnlevel" msprop:Generator_ColumnPropNameInRow="level" msprop:Generator_ColumnPropNameInTable="levelColumn" msprop:Generator_UserColumnName="level">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

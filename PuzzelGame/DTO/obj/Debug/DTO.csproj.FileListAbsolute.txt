@@ -1,0 +1,2 @@
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache

@@ -12,17 +12,20 @@ namespace PuzzelGame
     {
         private TableLayoutPanel panel;
         private int level;
+        private Timer timer;
         private Button[,] buttons;
         private Bitmap[,] bmps;
         private String imgPath;
         Label labelCount;
+        public ControllerImg() { }
 
-        public ControllerImg(TableLayoutPanel panel, int level, String imgPath, Label labelCount)
+        public ControllerImg(TableLayoutPanel panel, int level, String imgPath, Label labelCount, Timer timer)
         {
             this.panel = panel;
             this.level = level;
             this.imgPath = imgPath;
             this.labelCount = labelCount;
+            this.timer = timer;
             panel.ColumnCount = level;
             panel.RowCount = level;
         }
@@ -33,39 +36,36 @@ namespace PuzzelGame
             {
                 for (int j = 0; j < level; j++)
                 {
-                    if (buttons[i, j].BackgroundImage == null)
+                    if (buttons[i, j].BackgroundImage==null)
                     {
                         if (i < level - 1 && sender == buttons[i + 1, j])
                         {
-                            buttons[i, j].BackgroundImage = buttons[i + 1, j].BackgroundImage;
-                            buttons[i + 1, j].BackgroundImage = null;
+                            swapButton(buttons[i, j], buttons[i + 1, j]);
+                            labelCount.Text = (++count).ToString();
                         }
                         if (i > 0 && sender == buttons[i - 1, j])
                         {
-                            buttons[i, j].BackgroundImage = buttons[i - 1, j].BackgroundImage;
-                            buttons[i - 1, j].BackgroundImage = null;
+                            swapButton(buttons[i, j], buttons[i - 1, j]);
+                            labelCount.Text = (++count).ToString();
                         }
                         if (j < level - 1 && sender == buttons[i, j + 1])
                         {
-                            buttons[i, j].BackgroundImage = buttons[i, j + 1].BackgroundImage;
-                            buttons[i, j + 1].BackgroundImage = null;
+                            swapButton(buttons[i, j], buttons[i, j + 1]);
+                            labelCount.Text = (++count).ToString();
                         }
                         if (j > 0 && sender == buttons[i, j - 1])
                         {
-                            buttons[i, j].BackgroundImage = buttons[i, j - 1].BackgroundImage;
-                            buttons[i, j - 1].BackgroundImage = null;
+                            swapButton(buttons[i, j], buttons[i, j - 1]);
+                            labelCount.Text = (++count).ToString();
                         }
                     }
                 }
             }
-            //int count = Int32.Parse(labelCount.Text);
-            labelCount.Text = (++count).ToString();
             if (checkSuccess())
             {
+                timer.Stop();
                 MessageBox.Show("you win");
             }
-
-
         }
 
         internal void designButton()
@@ -87,7 +87,6 @@ namespace PuzzelGame
             {
                 img = Image.FromFile(imgPath);
             }
-            //img.Width = 210;
             img = resizeImage(img, new Size(250, 250));
             int widthThird = (int)((double)img.Width / level);
             int heightThird = (int)((double)img.Height / level);
@@ -112,14 +111,12 @@ namespace PuzzelGame
                     //Console.WriteLine(panel.Width / level + "," + panel.Height / level);
                     buttons[i, j].BackgroundImage = bmps[i, j];
                     buttons[i, j].Size = new Size(img.Width / level, img.Height / level);
+                    buttons[i, j].Enabled = false;
                     buttons[i, j].Click += ButtonHanler;
                     panel.Controls.Add(buttons[i, j]);
                 }
             }
             buttons[level - 1, level - 1].BackgroundImage = null;
-
-
-            randomButton();
         }
 
         public bool checkSuccess()
@@ -136,9 +133,22 @@ namespace PuzzelGame
             }
             return true;
         }
+        public void swapButton(Button a, Button b)
+        {
+            a.BackgroundImage = b.BackgroundImage;
+            b.BackgroundImage = null;
+        }
 
         public void randomButton()
         {
+            for (int i = 0; i < level; i++)
+            {
+                for (int j = 0; j < level; j++)
+                {
+                    buttons[i, j].Enabled = true;
+                }
+            }
+
             int rowIndex = level - 1;
             int colIndex = level - 1;
             Random random = new Random();
@@ -151,8 +161,7 @@ namespace PuzzelGame
                     case 1:
                         if (rowIndex > 0)
                         {
-                            buttons[rowIndex, colIndex].BackgroundImage = buttons[rowIndex - 1, colIndex].BackgroundImage;
-                            buttons[rowIndex - 1, colIndex].BackgroundImage = null;
+                            swapButton(buttons[rowIndex, colIndex], buttons[rowIndex - 1, colIndex]);
                             rowIndex -= 1;
                         }
                         break;
@@ -161,8 +170,7 @@ namespace PuzzelGame
                     case 2:
                         if (colIndex < level - 1)
                         {
-                            buttons[rowIndex, colIndex].BackgroundImage = buttons[rowIndex, colIndex + 1].BackgroundImage;
-                            buttons[rowIndex, colIndex + 1].BackgroundImage = null;
+                            swapButton(buttons[rowIndex, colIndex], buttons[rowIndex, colIndex + 1]);
                             colIndex += 1;
                         }
                         break;
@@ -170,8 +178,7 @@ namespace PuzzelGame
                     case 3:
                         if (rowIndex < level - 1)
                         {
-                            buttons[rowIndex, colIndex].BackgroundImage = buttons[rowIndex + 1, colIndex].BackgroundImage;
-                            buttons[rowIndex + 1, colIndex].BackgroundImage = null;
+                            swapButton(buttons[rowIndex, colIndex], buttons[rowIndex + 1, colIndex]);
                             rowIndex += 1;
                         }
                         break;
@@ -179,15 +186,14 @@ namespace PuzzelGame
                     case 4:
                         if (colIndex > 0)
                         {
-                            buttons[rowIndex, colIndex].BackgroundImage = buttons[rowIndex, colIndex - 1].BackgroundImage;
-                            buttons[rowIndex, colIndex - 1].BackgroundImage = null;
+                            swapButton(buttons[rowIndex, colIndex], buttons[rowIndex, colIndex - 1]);
                             colIndex -= 1;
                         }
                         break;
                 }
             }
         }
-        private static Image resizeImage(Image imgToResize, Size size)
+        public Image resizeImage(Image imgToResize, Size size)
         {
             //New Width  
             int destWidth = size.Width;
