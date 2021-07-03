@@ -55,7 +55,12 @@ namespace PuzzelGame
 
         private void boxLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+            count = 0;
+            labelCount.Text = "0";
+            labelTime.Text = "0";
             panelTable.Controls.Clear();
+            timer.Stop();
             level = getLevel();
             if(String.IsNullOrEmpty(imgPath))
             {
@@ -96,7 +101,6 @@ namespace PuzzelGame
             else
             {
                 pictureBox.Image = controllerImg.resizeImage(Image.FromFile(imgPath), new Size(270, 270));
-
             }
             loadLevel();
             boxLevel.SelectedIndex = 0;
@@ -116,6 +120,9 @@ namespace PuzzelGame
         private void btnNewGame_Click(object sender, EventArgs e)
         {
 
+            count = 0;
+            labelCount.Text = "0";
+            boxLevel_SelectedIndexChanged(sender,e);
             if (String.IsNullOrEmpty(imgPath))
             {
                 controllerClassic.randomButton();
