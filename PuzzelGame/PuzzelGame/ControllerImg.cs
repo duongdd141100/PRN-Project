@@ -16,10 +16,16 @@ namespace PuzzelGame
         private Button[,] buttons;
         private Bitmap[,] bmps;
         private String imgPath;
-        Label labelCount;
+        private Label labelCount;
+        private Label labelTime;
+        private Label labelCountByCount;
+        private Label labelTimeByTime;
+        private Label labelTimeByCount;
+        private Label labelCountByTime;
+        private List<int> listMove = new List<int>();
         public ControllerImg() { }
 
-        public ControllerImg(TableLayoutPanel panel, int level, String imgPath, Label labelCount, Timer timer)
+        public ControllerImg(TableLayoutPanel panel, int level, String imgPath, Label labelCount, Timer timer, Label labelTime, Label labelCountByCount, Label labelTimeByTime, Label labelTimeByCount, Label labelCountByTime)
         {
             this.panel = panel;
             this.level = level;
@@ -28,6 +34,11 @@ namespace PuzzelGame
             this.timer = timer;
             panel.ColumnCount = level;
             panel.RowCount = level;
+            this.labelTime = labelTime;
+            this.labelCountByCount = labelCountByCount;
+            this.labelTimeByTime = labelTimeByTime;
+            this.labelCountByTime = labelCountByTime;
+            this.labelTimeByCount = labelTimeByCount;
         }
         int count = 0;
         private void ButtonHanler(object sender, EventArgs e)
@@ -42,21 +53,25 @@ namespace PuzzelGame
                         {
                             swapButton(buttons[i, j], buttons[i + 1, j]);
                             labelCount.Text = (++count).ToString();
+                            listMove.Add(1);
                         }
                         if (i > 0 && sender == buttons[i - 1, j])
                         {
                             swapButton(buttons[i, j], buttons[i - 1, j]);
                             labelCount.Text = (++count).ToString();
+                            listMove.Add(3);
                         }
                         if (j < level - 1 && sender == buttons[i, j + 1])
                         {
                             swapButton(buttons[i, j], buttons[i, j + 1]);
                             labelCount.Text = (++count).ToString();
+                            listMove.Add(4);
                         }
                         if (j > 0 && sender == buttons[i, j - 1])
                         {
                             swapButton(buttons[i, j], buttons[i, j - 1]);
                             labelCount.Text = (++count).ToString();
+                            listMove.Add(2);
                         }
                     }
                 }
@@ -64,10 +79,71 @@ namespace PuzzelGame
             if (checkSuccess())
             {
                 timer.Stop();
-                MessageBox.Show("you win");
+                LoadData load = new LoadData();
+                int time = Int32.Parse(labelTime.Text);
+                int minTime = Int32.Parse(labelTimeByTime.Text);
+                bool isHighScore = false;
+                if (time < minTime || minTime == 0)
+                {
+                    load.updateScore(labelTime.Text, labelCount.Text, 2, level, "Time");
+                    MessageBox.Show("You are victory! New Min Time Score!", "Alert");
+                    load.loadTimeScore(labelCountByTime, labelTimeByTime, level, imgPath);
+                    isHighScore = true;
+                }
+                int minCount = Int32.Parse(labelCountByCount.Text);
+                if (count < minCount || minCount == 0)
+                {
+                    load.updateScore(labelTime.Text, labelCount.Text, 2, level, "Count");
+                    MessageBox.Show("You are victory! New Min Count Score!", "Alert");
+                    load.loadCountScore(labelCountByCount, labelTimeByCount, level, imgPath);
+                    isHighScore = true;
+                }
+                if (!isHighScore)
+                {
+                    MessageBox.Show("You are victory!", "Alert");
+                }
             }
         }
+        internal void undo()
+        {
+            if (listMove.Count == 0)
+            {
+                MessageBox.Show("Out of move!", "Alert");
+            }
+            else
+            {
+                for (int i = 0; i < level; i++)
+                {
+                    for (int j = 0; j < level; j++)
+                    {
+                        if (buttons[i, j].BackgroundImage == null)
+                        {
+                            switch (listMove[listMove.Count - 1])
+                            {
+                                case 1:
+                                    swapButton(buttons[i, j], buttons[i - 1, j]);
+                                    break;
+                                case 2:
+                                    swapButton(buttons[i, j], buttons[i, j + 1]);
+                                    break;
+                                case 3:
+                                    swapButton(buttons[i, j], buttons[i + 1, j]);
+                                    break;
+                                case 4:
+                                    swapButton(buttons[i, j], buttons[i, j - 1]);
+                                    break;
+                            }
+                            i = level;
+                            j = level;
+                        }
+                    }
 
+                }
+                listMove.RemoveAt(listMove.Count - 1);
+                count--;
+                labelCount.Text = count.ToString();
+            }
+        }
         internal void designButton()
         {
             panel.Location = new Point(5, 5);

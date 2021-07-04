@@ -58,6 +58,7 @@
     <Compile Include="GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="PROJECT_PRNDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
