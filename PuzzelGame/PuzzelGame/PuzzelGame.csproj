@@ -59,6 +59,11 @@
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="PROJECT_PRNDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PROJECT_PRNDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChooseGameType.resx">
       <DependentUpon>ChooseGameType.cs</DependentUpon>
@@ -71,6 +76,18 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="PROJECT_PRNDataSet.xsc">
+      <DependentUpon>PROJECT_PRNDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PROJECT_PRNDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PROJECT_PRNDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PROJECT_PRNDataSet.xss">
+      <DependentUpon>PROJECT_PRNDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,6 +111,12 @@
     <Content Include="Images\MyBae2.jpeg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{f2f7b300-5c12-46fa-802f-b14a4fde302f}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

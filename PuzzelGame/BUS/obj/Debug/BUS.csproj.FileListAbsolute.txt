@@ -1,0 +1,10 @@
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\bin\Debug\BUS.exe
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\bin\Debug\BUS.pdb
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\bin\Debug\DAO.exe
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\bin\Debug\DAO.pdb
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\bin\Debug\DAO.exe.config
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\obj\Debug\BUS.csprojAssemblyReference.cache
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\obj\Debug\BUS.csproj.CopyComplete
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\obj\Debug\BUS.exe
+C:\Users\Admin\OneDrive\Documents\GitHub\PRN-Project\PuzzelGame\BUS\obj\Debug\BUS.pdb

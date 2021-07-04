@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BUS;
 
 namespace PuzzelGame
 {
@@ -13,15 +14,30 @@ namespace PuzzelGame
     {
         int level;
         public int count = 0;
-        int time = 0;
         String imgPath;
+        ControllerImg controllerImg;
+        ControllerClassic controllerClassic;
+
+        public GameForm() { }
         public GameForm(String imgPath)
         {
             InitializeComponent();
             this.imgPath = imgPath;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            boxLevel.SelectedIndex = 0;
-            level = getLevel();
+            
+        }
+
+        private void loadLevel()
+        {
+            //boxLevel.Items.Add("3x3");
+            LevelBUS levelbus = new LevelBUS();
+            DataTable datatable = levelbus.getLevel();
+            foreach (DataRow item in datatable.Rows)
+            {
+                boxLevel.Items.Add(item["level"].ToString());
+            }
+            //boxLevel.DataSource = datatable;
+
         }
 
         private int getLevel()
@@ -39,16 +55,21 @@ namespace PuzzelGame
 
         private void boxLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+            count = 0;
+            labelCount.Text = "0";
+            labelTime.Text = "0";
             panelTable.Controls.Clear();
+            timer.Stop();
             level = getLevel();
             if(String.IsNullOrEmpty(imgPath))
             {
-                ControllerClassic con = new ControllerClassic(panelTable, level, labelCount);
-                con.designButton();
+                controllerClassic = new ControllerClassic(panelTable, level, labelCount,timer);
+                controllerClassic.designButton();
             } else
             {
-                ControllerImg con = new ControllerImg(panelTable, level, imgPath, labelCount);
-                con.designButton();
+                controllerImg = new ControllerImg(panelTable, level, imgPath, labelCount, timer);
+                controllerImg.designButton();
             }
                 
         }
@@ -60,7 +81,71 @@ namespace PuzzelGame
 
         private void form_Load(object sender, EventArgs e)
         {
+            controllerImg = new ControllerImg(panelTable, level, imgPath, labelCount, timer);
+            if (imgPath.Equals("img1"))
+            {
+                pictureBox.Image = controllerImg.resizeImage(PuzzelGame.Properties.Resources.img1, new Size(270, 270));
+            }
+            else if (imgPath.Equals("img2"))
+            {
+                pictureBox.Image = controllerImg.resizeImage(PuzzelGame.Properties.Resources.img2, new Size(270, 270));
+            }
+            else if (imgPath.Equals("img3"))
+            {
+                pictureBox.Image = controllerImg.resizeImage(PuzzelGame.Properties.Resources.img3, new Size(270, 270));
+            }
+            else if (String.IsNullOrEmpty(imgPath))
+            {
+                this.Controls.Remove(pictureBox);
+            }
+            else
+            {
+                pictureBox.Image = controllerImg.resizeImage(Image.FromFile(imgPath), new Size(270, 270));
+            }
+            loadLevel();
+            boxLevel.SelectedIndex = 0;
+            //level = getLevel();
+            // TODO: This line of code loads data into the 'pROJECT_PRNDataSet.Level' table. You can move, or remove it, as needed.
+            //this.levelTableAdapter.Fill(this.pROJECT_PRNDataSet.Level);
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        
+
+        private void btnNewGame_Click(object sender, EventArgs e)
+        {
+
+            count = 0;
+            labelCount.Text = "0";
+            boxLevel_SelectedIndexChanged(sender,e);
+            if (String.IsNullOrEmpty(imgPath))
+            {
+                controllerClassic.randomButton();
+            }
+            else
+            {
+                controllerImg.randomButton();
+
+            }
+            timer.Start();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChooseGameType chooseGameType = new ChooseGameType();
+            chooseGameType.Show();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            count++;
+            labelTime.Text = count.ToString();
         }
     }
 }
