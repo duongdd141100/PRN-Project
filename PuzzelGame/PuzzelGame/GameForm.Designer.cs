@@ -181,7 +181,7 @@ namespace PuzzelGame
             this.pictureBox.Location = new System.Drawing.Point(835, 23);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(481, 496);
+            this.pictureBox.Size = new System.Drawing.Size(508, 496);
             this.pictureBox.TabIndex = 11;
             this.pictureBox.TabStop = false;
             // 

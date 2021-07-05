@@ -75,6 +75,7 @@ namespace PuzzelGame
             }
             if (isSuccess())
             {
+                listMove.Clear();
                 timer.Stop();
                 LoadData load = new LoadData();
                 int time = Int32.Parse(labelTime.Text);
@@ -98,6 +99,18 @@ namespace PuzzelGame
                 if(!isHighScore)
                 {
                     MessageBox.Show("You are victory!", "Alert");
+                }
+                enablePlayButton(false);
+            }
+        }
+
+        private void enablePlayButton(bool isEnableButton)
+        {
+            for(int i = 0; i < level; i++)
+            {
+                 for(int j = 0; j < level; j++)
+                {
+                    buttons[i, j].Enabled = isEnableButton;
                 }
             }
         }
@@ -196,13 +209,7 @@ namespace PuzzelGame
 
         public void randomButton()
         {
-            for (int i = 0; i < level; i++)
-            {
-                for (int j = 0; j < level; j++)
-                {
-                    buttons[i, j].Enabled = true;
-                }
-            }
+            enablePlayButton(true);
 
             int rowIndex = level - 1;
             int colIndex = level - 1;

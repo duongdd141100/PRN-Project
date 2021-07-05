@@ -76,7 +76,7 @@ namespace PuzzelGame
                     }
                 }
             }
-            if (checkSuccess())
+            if (isSuccess())
             {
                 timer.Stop();
                 LoadData load = new LoadData();
@@ -102,6 +102,8 @@ namespace PuzzelGame
                 {
                     MessageBox.Show("You are victory!", "Alert");
                 }
+                listMove.Clear();
+                enablePlayButton(false);
             }
         }
         internal void undo()
@@ -195,7 +197,7 @@ namespace PuzzelGame
             buttons[level - 1, level - 1].BackgroundImage = null;
         }
 
-        public bool checkSuccess()
+        public bool isSuccess()
         {
             for (int i = 0; i < level; i++)
             {
@@ -282,6 +284,16 @@ namespace PuzzelGame
             g.DrawImage(imgToResize, 0, 0, destWidth, destHeight);
             g.Dispose();
             return (Image)b;
+        }
+        private void enablePlayButton(bool isEnableButton)
+        {
+            for (int i = 0; i < level; i++)
+            {
+                for (int j = 0; j < level; j++)
+                {
+                    buttons[i, j].Enabled = isEnableButton;
+                }
+            }
         }
     }
 }

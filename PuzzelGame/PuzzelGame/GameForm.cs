@@ -78,6 +78,10 @@ namespace PuzzelGame
             panelTable.Controls.Clear();
             timer.Stop();
             level = getLevel();
+            LoadData load = new LoadData();
+            load.loadCountScore(labelCountByCount, labelTimeByCount, level, imgPath);
+            load.loadTimeScore(labelCountByTime, labelTimeByTime, level, imgPath);
+
             if (String.IsNullOrEmpty(imgPath))
             {
                 controllerClassic = new ControllerClassic(panelTable, level, labelCount, timer, labelTime, labelCountByCount, labelTimeByTime, labelTimeByCount, labelCountByTime);
